@@ -1,4 +1,4 @@
-package sec05.ex01;
+package sec05.ex02;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class useDB
  */
-//@WebServlet("/useDB")
+@WebServlet("/useDB")
 public class useDB extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
