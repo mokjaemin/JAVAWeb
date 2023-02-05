@@ -153,7 +153,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       
-      <Context docBase="JSP_ExpressionLanguage" path="/JSP_ExpressionLanguage" reloadable="true" source="org.eclipse.jst.jee.server:JSP_ExpressionLanguage"/></Host>
+      <Context docBase="JSP_FileUp" path="/JSP_FileUp" reloadable="true" source="org.eclipse.jst.jee.server:JSP_FileUp"/></Host>
     </Engine>
   </Service>
 </Server>
