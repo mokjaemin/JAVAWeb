@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
- * Servlet implementation class fileUpload
+ * Servlet implementation class FileDownload
  */
 @WebServlet("/upload.do")
 public class FileUpload extends HttpServlet {
@@ -46,6 +47,7 @@ public class FileUpload extends HttpServlet {
 		factory.setSizeThreshold(1024*1024); // 최대 업로드할 파일 용량
 		
 		ServletFileUpload upload = new ServletFileUpload(factory);
+		String fileName = null;
 		try {
 			List items = upload.parseRequest(request);
 			for (int i=0; i<items.size(); i++) {
@@ -66,7 +68,7 @@ public class FileUpload extends HttpServlet {
 							idx = fileItem.getName().lastIndexOf("/");
 						}
 						// idx의 위치 다음부터의 내용을 불러움 즉, 파일의 이름을 받아옴
-						String fileName = fileItem.getName().substring(idx + 1);
+						fileName = fileItem.getName().substring(idx + 1);
 						File uploadFile = new File(currentDirPath + "/" + fileName);
 						fileItem.write(uploadFile); // 파일 저장
 					}
@@ -75,5 +77,11 @@ public class FileUpload extends HttpServlet {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
+		request.setAttribute("param1", fileName);
+		RequestDispatcher dis = request.getRequestDispatcher("test02/result.jsp");
+		dis.forward(request, response);
+		
  	}
 }
+
