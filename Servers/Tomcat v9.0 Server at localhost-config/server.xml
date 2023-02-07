@@ -153,7 +153,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       
-      <Context docBase="Jquery" path="/Jquery" reloadable="true" source="org.eclipse.jst.jee.server:Jquery"/></Host>
+      <Context docBase="JSP_MVC" path="/JSP_MVC" reloadable="true" source="org.eclipse.jst.jee.server:JSP_MVC"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-Latest.min.js"></script>
+<script type="text/javascript">
+	function fn_process(){ // 버튼 클릭시
+		$.ajax({
+			type : "post", // get방식으로 전달
+			async : false, // 동기 방식으로 전달
+			url : "http://localhost:8090/Jquery/AjaxTest2", // 해당 url에 전달
+			dataType : "xml", // 전송 받을 데이터 형식
+			success : function(info, textStatus){ // 성공시실행, data는 전달받은 데이터
+				$(info).find("book").each(function(){
+					var title = $(this).find("title").text();
+					var writer = $(this).find("writer").text();
+					var image = $(this).find("image").text();
+					$("#bookInfo").append(
+							"<p>" + title + "</p>" +
+							"<p>" + writer + "</p>" +
+							"<img src = " + image + "	/>"
+					);
+				});
+			},
+			error : function(data, textStatus){ // 에러시 실행
+				alert(textStatus);
+				alert("에러가 발생했습니다.");
+			},
+			complete : function(data, textStatus){ // 작업 완료시
+				alert("작업을 완료했습니다.");
+			}
+		});
+	}
+</script>
+</head>
+<body>
+<div id="bookInfo"></div>
+<input type="button" value="정보 요청" onClick="fn_process()"/><br>
+</body>
+</html>

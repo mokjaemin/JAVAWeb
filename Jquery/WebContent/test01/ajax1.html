@@ -12,13 +12,13 @@
 			async : false, // 동기 방식으로 전달
 			url : "http://localhost:8090/Jquery/AjaxTest1", // 해당 url에 전달
 			data : {param:"Hello, jquery"}, // 전달하는 데이터
-			success : function(data, textStatus){ // 성공시실행
+			success : function(data, textStatus){ // 성공시실행, data는 전달받은 데이터
 				$('#message').append(data);
 			},
 			error : function(data, textStatus){ // 에러시 실행
 				alert("에러가 발생했습니다.");
 			},
-			complete : function(data, textStatus){ //
+			complete : function(data, textStatus){ // 작업 완료시
 				alert("작업을 완료했습니다.");
 			}
 		});
