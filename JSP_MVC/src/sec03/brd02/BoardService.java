@@ -14,8 +14,9 @@ public class BoardService {
 		return articlesList;
 	}
 	
+	// 기사 추가 기능
 	public void addArticle(ArticleVO article){
-		boardDAO.insertNewArticle(article);		
+		boardDAO.insertNewArticle(article);	
 	}
 
 }

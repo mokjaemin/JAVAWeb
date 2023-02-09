@@ -96,15 +96,23 @@ public class BoardController2 extends HttpServlet {
 			else if (action.equals("/addArticle.do")) {
 				// 밑에 private method인 upload 호출 및 request, response 전달
 				Map<String, String> articleMap = upload(request, response);
+				
 				String title = articleMap.get("title");
 				String content = articleMap.get("content");
 				String imageFileName = articleMap.get("imageFileName");
 
-				articleVO.setParentNO(0);
-				articleVO.setId("hong");
-				articleVO.setTitle(title);
-				articleVO.setContent(content);
-				articleVO.setImageFileName(imageFileName);
+				articleVO.setParentNO(0); // 부모기사 인덱스 설정
+				articleVO.setId("hong"); // id 설정
+				articleVO.setTitle(title); // 제목 설정
+				articleVO.setContent(content); // 내용 설정
+				articleVO.setImageFileName(imageFileName); // 파일명 설정
+				
+				// 잘 전달 받았는지 확인 
+				System.out.println(title);
+				System.out.println(content);
+				System.out.println(imageFileName);
+				
+				// 기존에 생성한 서비스 클래스에 내용 전달
 				boardService.addArticle(articleVO);
 				nextPage = "/board/listArticles.do";
 			}
@@ -139,23 +147,33 @@ public class BoardController2 extends HttpServlet {
 			for (int i = 0; i < items.size(); i++) { // 아이템의 크기만큼 반복, 각 아이템은 각각의 키값들
 				FileItem fileItem = (FileItem) items.get(i);
 				if (fileItem.isFormField()) { // formFiled인지 확인 (file이 아닌것들)
-					System.out.println(fileItem.getFieldName() + "=" + fileItem.getString(encoding));
+					// System.out.println(fileItem.getFieldName() + "=" + fileItem.getString(encoding));
+					// Map 의 키값으로 파라미터 명과 내용을 삽입
+					// title, content 
 					articleMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
-					// ex) param1=1 등 식으로 파일 아닌 것들을 출력
+					// ex) param1=1 등 식으로 파일 아닌 것들을 출력, title content 등
 				} 
 				else { // 파일 인것들(사진등)
-					System.out.println("파라미터 명:" + fileItem.getFieldName());
-					System.out.println("파일 크기:" + fileItem.getSize() + "bytes");
+					// 파라미터 명 출력 imageFileName from articleForm.jsp
+					// System.out.println("파라미터 명:" + fileItem.getFieldName());
+					//파라미터 크기 출력
+					// System.out.println("파일 크기:" + fileItem.getSize() + "bytes");
+					// 파일 크기가 0이상 일 경우(파일이 존재할 경우)
 					if (fileItem.getSize() > 0) {
+						// 파일명 가져옴
 						int idx = fileItem.getName().lastIndexOf("\\"); //
 						
 						if (idx == -1) {
 							idx = fileItem.getName().lastIndexOf("/");
 						}
+						// 실제 파일명만 불러옴
 						String fileName = fileItem.getName().substring(idx + 1);
-						System.out.println("파일 명:" + fileName);
+						// System.out.println("파일 명:" + fileName);
+						// Map 의 키로 파라미터명 값으로 파일 이름 삽입
+						// imageFileName
 						articleMap.put(fileItem.getFieldName(), fileName);
-						File uploadFile = new File(currentDirPath + "\\" + fileName);
+						File uploadFile = new File(currentDirPath + "/" + fileName);
+						// 컴퓨터내의 해당 경로에 파일 다운로드
 						fileItem.write(uploadFile);
 
 					} // end if
@@ -164,6 +182,7 @@ public class BoardController2 extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		// 파라미터 명과 파일 이름 반환 
 		return articleMap;
 	}
 

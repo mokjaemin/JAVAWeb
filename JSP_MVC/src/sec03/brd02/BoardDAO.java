@@ -65,6 +65,7 @@ public class BoardDAO {
 		return articlesList;
 	}
 
+	// 다음 기사 인덱스를 위한 현재 마지막 기사 인덱스 반환
 	private int getNewArticleNO() {
 		try {
 			conn = dataFactory.getConnection();
@@ -73,6 +74,7 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(query);
 			ResultSet rs = pstmt.executeQuery(query);
 			if (rs.next())
+				// 1 더해서 반환
 				return (rs.getInt(1) + 1);
 			rs.close();
 			pstmt.close();
@@ -83,10 +85,13 @@ public class BoardDAO {
 		return 0;
 	}
 
+	// 글 추가 기능
 	public void insertNewArticle(ArticleVO article) {
 		try {
 			conn = dataFactory.getConnection();
+			// 기사의 인덱스
 			int articleNO = getNewArticleNO();
+			// 부모 기사 인덱스
 			int parentNO = article.getParentNO();
 			String title = article.getTitle();
 			String content = article.getContent();
