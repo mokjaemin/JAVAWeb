@@ -1,4 +1,4 @@
-package sec03.brd02;
+package sec03.brd03;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,15 +17,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 
 /**
  * Servlet implementation class BoardController
  */
 //@WebServlet("/board/*")
-public class BoardController2 extends HttpServlet {
+public class BoardController3 extends HttpServlet {
 	
 	// 파일경로 변수
 	private static String ARTICLE_IMAGE_REPO = "/Users/mokjaemin/Desktop/test";
@@ -113,8 +113,17 @@ public class BoardController2 extends HttpServlet {
 				System.out.println(imageFileName);
 				
 				// 기존에 생성한 서비스 클래스에 내용 전달
-				boardService.addArticle(articleVO);
+				Integer articleNO;
+				articleNO = boardService.addArticle(articleVO);
 				nextPage = "/board/listArticles.do";
+				
+				if(articleNO != -1) {
+					File originalFile = new File(ARTICLE_IMAGE_REPO+"/"+imageFileName);
+					File moveFile = new File(ARTICLE_IMAGE_REPO+"/"+articleNO);
+					moveFile.mkdirs(); // 컴퓨터 내의 새로운 파일 생성
+					FileUtils.moveFileToDirectory(originalFile, moveFile, true);
+					// originalFile.delete();
+				}
 			}
 			// 그 이외의 경우는 모두 글 목록 페이지로 이동
 			else {
