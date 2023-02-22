@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+                             "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!-- MemberService 관련 bean -->
+   <bean id="MemberService" class="com.spring.ex03.MemberServiceImpl">
+      <property name="memberDAO" ref="MemberDAO"/>
+   </bean> 
+   
+   <!-- MemberDAO 관련 bean -->
+   <bean id="MemberDAO" class="com.spring.ex03.MemberDAOImpl"></bean>
+   
+   
+   <!-- 두번째 bean을 첫번째 bean의 memberDAO에 주입 ( ref사용을 통해 )-->
+   
+</beans>
