@@ -4,42 +4,58 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.member">
-	<resultMap id="memResult" type="memberVO">
+<!-- 	<resultMap id="memResult" type="memberVO">
 		<result property="id" column="id" />
         <result property="pwd" column="pwd" />
         <result property="name" column="name" />
         <result property="email" column="email" />
         <result property="joinDate" column="joinDate" />
-	</resultMap> 
-	<!-- 
+	</resultMap>  -->
+	
+	
+	<!-- key and value -->
+	<!-- column = key, property = value -->
 	<resultMap id="memResult" type="java.util.HashMap">
       <result property="id" column="id" />
       <result property="pwd" column="pwd" />
       <result property="name" column="name" />
       <result property="email" column="email" />
       <result property="joinDate" column="joinDate" />
-   </resultMap> -->
+   </resultMap>
 
 
+
+
+
+	<!-- 실습 1 -->
 	<select id="selectAllMemberList" resultMap="memResult">
-      <![CDATA[
-         select * from t_member	order by joinDate desc	 	
-      ]]>
+    <![CDATA[
+        select * from t_member	order by joinDate desc	 	
+    ]]>
 	</select>
 
+
+
+
+
+	<!-- 실습 2 -->
 	<select id="selectName" resultType="String">
-    <![CDATA[
-	select name from t_member
-	where id = 'hong'			
-    ]]>
+	    <![CDATA[
+		select name from t_member
+		where id = 'son7'			
+	    ]]>
 	</select>
 	
 	<select id="selectPwd" resultType="int" >
-	  <![CDATA[ 
-	    select pwd from t_member 
-	    where id = 'hong'
-	 ]]>
+		  <![CDATA[ 
+		    select pwd from t_member 
+		    where id = 'son7'
+		 ]]>
 	 </select> 
+	 
+	 
+	 
+	 
 	 
 	<select id="selectMemberById" resultType="memberVO"  parameterType="String" >
       <![CDATA[
