@@ -3,7 +3,10 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
+
+
 <configuration>
+	<!-- 타입에 대한 별명 지정 -->
    <typeAliases>
       <typeAlias type="com.spring.ex01.MemberVO" alias="memberVO"/>
    </typeAliases>
@@ -20,7 +23,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
      </environment>
    </environments>
 
+
+
 <mappers>
    <mapper resource="mybatis/mappers/member.xml"/>
 </mappers>
+
+
+
 </configuration>

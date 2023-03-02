@@ -4,12 +4,14 @@
 <beans>
 
 	<!-- MemberService 관련 bean -->
-   <bean id="MemberService" class="com.spring.ex03.MemberServiceImpl">
-      <property name="memberDAO" ref="MemberDAO"/>
+   <bean id="MemberService" class="com.spring.ex05.MemberServiceImpl">
+      <property name="mysql" ref="mysql"/>
    </bean> 
    
    <!-- MemberDAO 관련 bean -->
-   <bean id="MemberDAO" class="com.spring.ex03.MemberDAOImpl"></bean>
+   <bean id="mysql" class="com.spring.ex05.MySQl"></bean>
+   
+   
    
    
    <!-- 두번째 bean을 첫번째 bean의 memberDAO에 주입 ( ref사용을 통해 )-->

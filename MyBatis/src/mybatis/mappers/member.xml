@@ -4,15 +4,17 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.member">
-<!-- 	<resultMap id="memResult" type="memberVO">
+	<!-- 결과를 memberVO로 전달 -->
+	<!--<resultMap id="memResult" type="memberVO">
 		<result property="id" column="id" />
         <result property="pwd" column="pwd" />
         <result property="name" column="name" />
         <result property="email" column="email" />
         <result property="joinDate" column="joinDate" />
-	</resultMap>  -->
+	</resultMap>-->
 	
 	
+	<!-- 결과를 HashMap으로 전달 -->
 	<!-- key and value -->
 	<!-- column = key, property = value -->
 	<resultMap id="memResult" type="java.util.HashMap">
@@ -56,7 +58,10 @@
 	 
 	 
 	 
-	 
+	<!-- 실습3 -->
+	<!-- resultType은 위에서 지정한 방식 사용 또는 다른 방식 -->
+	<!-- resultMap은 여러개의 정보를 조회, resultType은 한개의 정보 조회 -->
+	<!-- parameterType은 sql에 전달되는 데이터의 조건 -->
 	<select id="selectMemberById" resultType="memberVO"  parameterType="String" >
       <![CDATA[
          select * from t_member
@@ -72,6 +77,10 @@
          pwd = #{pwd}			
       ]]>
     </select>
+    
+    
+    
+    
     
      <insert id="insertMember"  parameterType="memberVO">
 		<![CDATA[
