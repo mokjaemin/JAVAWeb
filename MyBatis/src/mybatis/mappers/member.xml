@@ -81,8 +81,8 @@
     
     
     
-    
-     <insert id="insertMember"  parameterType="memberVO">
+    <!-- 실습 4 -->
+    <insert id="insertMember"  parameterType="memberVO">
 		<![CDATA[
 		 insert into t_member(id,pwd, name, email)
 		 values(#{id}, #{pwd}, #{name}, #{email})
@@ -114,7 +114,10 @@
   </delete>
 	
 	
-	<!-- 동적 SQL문 -->
+	
+	
+	
+  <!-- 동적 SQL문 -->
   <select id="searchMember" parameterType="memberVO" resultMap="memResult">
       <![CDATA[
           select * from t_member

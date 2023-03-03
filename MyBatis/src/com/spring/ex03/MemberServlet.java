@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.spring.ex01.MemberVO;
 
-@WebServlet("/mem.do")
+//@WebServlet("/mem.do")
 public class MemberServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		doHandle(request, response);
