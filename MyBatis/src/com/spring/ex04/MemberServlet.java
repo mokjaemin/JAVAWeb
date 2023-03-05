@@ -43,6 +43,9 @@ public class MemberServlet extends HttpServlet {
 			request.setAttribute("member", memberVO);
 			nextPage = "test03/memberInfo.jsp";
 			
+		} else if (action.equals("memberForm")) {
+			nextPage = "test03/memberForm.jsp";
+			
 		} else if (action.equals("selectMemberByPwd")) {
 			int pwd = Integer.parseInt(request.getParameter("value"));
 			List<MemberVO> membersList = dao.selectMemberByPwd(pwd);
@@ -91,6 +94,8 @@ public class MemberServlet extends HttpServlet {
 	      dao.deleteMember(id);
 	      nextPage="/mem4.do?action=listMembers";
 	      
+	      
+	      
       }else if(action.equals("searchMember")){
           String name=request.getParameter("name");
           String email=request.getParameter("email");
@@ -100,29 +105,37 @@ public class MemberServlet extends HttpServlet {
           request.setAttribute("membersList",membersList);
           nextPage="test03/listMembers.jsp";
           
+          
+          
        }else if(action.equals("foreachSelect")) {
 		  List<String> nameList = new ArrayList<String>();
-		  nameList.add("ȫ�浿");
-		  nameList.add("������");
-		  nameList.add("�̼���");
+		  nameList.add("손흥민");
+		  nameList.add("이순신");
+		  nameList.add("목주형");
 		  List<MemberVO> membersList=dao.foreachSelect(nameList);
 		  request.setAttribute("membersList",membersList);
 		  nextPage="test03/listMembers.jsp";
 		  
+		  
+		  
 	   }else if(action.equals("foreachInsert")) {
           List<MemberVO> memList = new ArrayList<MemberVO>();
-          memList.add(new MemberVO("m1", "1234", "�ڱ浿", "m1@test.com"));
-          memList.add(new MemberVO("m2", "1234", "�̱浿", "m2@test.com"));
-          memList.add(new MemberVO("m3", "1234", "��浿", "m3@test.com"));
+          memList.add(new MemberVO("m1", "1234", "목길동", "m1@test.com"));
+          memList.add(new MemberVO("m2", "1234", "이길동", "m2@test.com"));
+          memList.add(new MemberVO("m3", "1234", "김길동", "m3@test.com"));
           int result=dao.foreachInsert(memList);
           nextPage="/mem4.do?action=listMembers";
           
+          
+          
 	    }else if(action.equals("selectLike")) {
-	      String name="�浿";
+	      String name="길동";
 		  List<MemberVO> membersList=dao.selectLike(name);
 		  request.setAttribute("membersList",membersList);
 		  nextPage="test03/listMembers.jsp";
 	   }
+		
+		
 		
 	   RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);  
 	   dispatch.forward(request, response);
