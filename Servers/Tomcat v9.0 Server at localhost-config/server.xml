@@ -153,7 +153,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       
-      <Context docBase="Spring_Mybatis" path="/Spring_Mybatis" reloadable="true" source="org.eclipse.jst.jee.server:Spring_Mybatis"/></Host>
+      <Context docBase="Spring_Transaction" path="/Spring_Transaction" reloadable="true" source="org.eclipse.jst.jee.server:Spring_Transaction"/></Host>
     </Engine>
   </Service>
 </Server>

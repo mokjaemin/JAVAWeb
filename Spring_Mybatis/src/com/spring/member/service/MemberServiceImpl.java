@@ -11,7 +11,10 @@ import com.spring.member.vo.MemberVO;
 
 /*@Transactional(propagation=Propagation.REQUIRED) */
 public class MemberServiceImpl  implements MemberService{
+	
 	   private MemberDAO memberDAO;
+	   // DAO 주입
+	   // action-service에서 주입됨.
 	   public void setMemberDAO(MemberDAO memberDAO){
 	      this.memberDAO = memberDAO;
 	   }

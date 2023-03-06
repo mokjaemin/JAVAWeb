@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+		
+   <!-- 화면 처리 -->
+   <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+      <property name="prefix" value="/WEB-INF/views/account/" /> 
+      <property name="suffix" value=".jsp"/>
+   </bean>
+   
+   
+   <!-- 컨트롤러 -->
+   <!-- accService 주입(입력 데이터의 타입), action-service.xml에 정의 되어있음 -->
+   <!-- acc-service의 상태
+   1. DB연결 정보 주입
+   2. Sql문 정보 주입 -->
+   <bean id="accController" class="com.spring.account.AccountController">
+      <property name="methodNameResolver">
+         <ref local="methodResolver"/>
+      </property>
+      <property name="accService" ref="accService"/>
+   </bean>
+
+
+
+   <!-- 요청에 따른 실행될 메소드 정의 -->
+   <bean  id="methodResolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver" >
+      <property  name="mappings" >
+        <props>
+          <prop key="/account/sendMoney.do">sendMoney</prop>
+       </props>
+      </property>
+   </bean>
+   
+   
+   
+   
+   <!-- 요청에 따른 실행될 컨트롤러 정의 -->
+   <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+      <property name="mappings">
+         <props>
+            <prop key="/account/*.do">accController</prop>
+         </props>
+      </property>
+   </bean>
+   
+   
+   
+   
+</beans>

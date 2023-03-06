@@ -5,12 +5,12 @@
 	id="WebApp_ID" version="3.0">
 	
 	
-	<!-- 실행시(서버 생성 시) 로드 -->
+	<!-- 서버 실행시 실행 -->
 	<listener>
       <listener-class>
          org.springframework.web.context.ContextLoaderListener
      </listener-class>
-   </listener>
+    </listener>
 	<context-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>
@@ -20,14 +20,16 @@
    </context-param>
 	
 	
+	
 	<servlet>
 		<servlet-name>action</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
 
 
-
+	<!-- 요청이 .do 일때마다 action-servlet.xml 실행 -->
 	<servlet-mapping>
 		<servlet-name>action</servlet-name>
 		<url-pattern>*.do</url-pattern>

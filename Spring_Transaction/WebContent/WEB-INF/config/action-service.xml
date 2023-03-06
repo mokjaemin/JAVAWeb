@@ -7,10 +7,10 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
-
-   <bean id="memberService" class="com.spring.member.service.MemberServiceImpl">
-      <property name="memberDAO" ref="memberDAO"/>
+	<!-- 입력 데이터에 타입 -->
+	<!-- 컨트롤러에 주입됨 -->
+	<!-- accDAO를 주입 받았음 action-mybatis.xml로 부터 -->
+   <bean id="accService" class="com.spring.account.AccountService">
+      <property name="accDAO" ref="accDAO"/>
    </bean>
-   
-   
 </beans>

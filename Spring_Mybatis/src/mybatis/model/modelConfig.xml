@@ -3,7 +3,8 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 
-<!-- 전달되는 데이터의 타입 설정 -->
+
+
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.spring.member.vo.MemberVO"  alias="memberVO" />

@@ -13,6 +13,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	
 	// sqlSession Bean 쥬입
+	// action-mybatis에서 주입됨.
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
