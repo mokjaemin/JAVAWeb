@@ -137,7 +137,7 @@ public class LoginController {
 		
 		// 아래 설정 없이 알아서 포워딩
 		// 이후 jsp에서는 info. 으로 내용 호출
-		// mav.addObject("info", info);
+		// mav.addObject("info", info); 필요없음
 		mav.setViewName("result");
 		return mav;
 	}
