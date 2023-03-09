@@ -24,9 +24,13 @@ import com.myspring.Spring_Sts_Maven.member.vo.MemberVO;
 
 
 @Controller("memberController")
-//@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy
 public class MemberControllerImpl   implements MemberController {
-	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class);
+	
+	// 로그 사용함을 설정
+	// AOP 사용시 굳이 사용 안해도 됨
+	// private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class);
+	
 	@Autowired
 	private MemberService memberService;
 	@Autowired
@@ -36,10 +40,13 @@ public class MemberControllerImpl   implements MemberController {
 	@RequestMapping(value="/member/listMembers.do" ,method = RequestMethod.GET)
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
-//		String viewName = (String)request.getAttribute("viewName");
+		// String viewName = (String)request.getAttribute("viewName");
 		//System.out.println("viewName: " +viewName);
-		logger.info("viewName: "+ viewName);
-		logger.debug("viewName: "+ viewName);
+		
+		// 로그 레벨이 info 일때 출력
+		// logger.info("viewName: "+ viewName);
+		// 로그 레벨이 debug 일때 출력
+		// logger.debug("viewName: "+ viewName);
 		List membersList = memberService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("membersList", membersList);
