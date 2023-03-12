@@ -39,8 +39,9 @@ public class MemberControllerImpl   implements MemberController {
 	@Override
 	@RequestMapping(value="/member/listMembers.do" ,method = RequestMethod.GET)
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = getViewName(request);
-		// String viewName = (String)request.getAttribute("viewName");
+		// String viewName = getViewName(request);
+		// Interceptor 설정시 활용
+		String viewName = (String)request.getAttribute("viewName");
 		//System.out.println("viewName: " +viewName);
 		
 		// 로그 레벨이 info 일때 출력

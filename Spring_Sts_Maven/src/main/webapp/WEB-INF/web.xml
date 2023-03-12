@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
 
+	<!-- Encoding 작업 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -12,23 +13,38 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
+	<!-- 모든 요청에 대해 한글로 Encoding 작업 처리 -->
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping> 
+	
+	
+	
+	<!-- 스프링폴더에 있는 모든 xml 파일 읽어오도록 설정 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/*.xml</param-value> 
+	</context-param>
+	
 
 
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
-	<context-param>
+	<!-- context-param>
 		<param-name>contextConfigLocation</param-name>
-		<!-- <param-value>/WEB-INF/spring/root-context.xml</param-value> -->
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 		<param-value>/WEB-INF/spring/action-mybatis.xml</param-value>
 	</context-param>
+	 -->
+	
+	
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+
+
 
 	<!-- Processes application requests -->
 	<servlet>
@@ -41,6 +57,9 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 		
+		
+		
+	<!-- 해당 요청시 "/" 위에 있는 appServlet 실행	 -->
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>

@@ -2,6 +2,7 @@
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
@@ -28,6 +29,7 @@
 	</beans:bean>
 	
 	
+	
 	<!-- 타일즈 관련 : 화면 레이아웃 기능 -->
 	<!-- <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<beans:property name="definitions">
@@ -40,6 +42,7 @@
 	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
 	</beans:bean> -->
+	
 	
 	
 	<!-- 다중 파일 업로드 기능 -->
@@ -55,8 +58,36 @@
 	
 	
 	
+	<!-- 번역을 위한 인터셉터 구현 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 해당 경로에 요청에 대해서 -->
+			<mvc:mapping path="/test/*.do"/> 
+			<!-- 모든 경로에 대한 요청에 대해서 -->
+			<!-- <mvc:mapping path="/*/*.do"/> -->
+			<!-- 해당 클래스를 실행하라 -->
+			<beans:bean class="com.myspring.Spring_Sts_Maven.ex05.LocaleInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
+	
+	<!-- 그동안 Controller에 작성한 ViewName메서드(요청명으로부터 View이름을 얻기위한)를 분리해
+	interceptor에서 처리 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 해당 경로에 요청에 대해서 -->
+			<!-- <mvc:mapping path="/test/*.do"/>  -->
+			<!-- 모든 경로에 대한 요청에 대해서 -->
+			<mvc:mapping path="/*/*.do"/>
+			<!-- 해당 클래스를 실행하라 -->
+			<beans:bean class="com.myspring.Spring_Sts_Maven.member.interceptor.ViewNameInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	
+	
+	
 	<context:component-scan base-package="com.myspring.Spring_Sts_Maven" />
-	
-	
 	
 </beans:beans>

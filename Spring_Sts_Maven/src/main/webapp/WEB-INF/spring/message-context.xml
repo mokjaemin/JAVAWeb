@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+	
+	
+	
+	
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+      <property name="basenames">
+         <list>       
+         	<!-- 번역 정보가 담겨있는 프로퍼티 -->         
+            <value>classpath:locale/message</value>
+         </list>
+      </property>
+      <!-- 파일의 기본 인코딩을 지정합니다. -->
+      <property name="defaultEncoding" value="UTF-8" />
+      <!-- 프로퍼티 파일(번역 정보)이 변했을시 60초 주기로 리로딩 -->
+      <property name="cacheSeconds" value="60"/>
+   </bean>
+   
+</beans>
+
