@@ -17,9 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
+	
+//	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
+//	public String home(Locale locale, Model model) {
+//		return "main";
+//	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		return "main";
+		return "JSONTest2";
 	}
 }
 
