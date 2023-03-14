@@ -1,3 +1,3 @@
 # JAVA PROJECT WEB1
-THIS IS PROJECT FOR STUDYING JAVA BACKEND SKILLS
-
+Those are files for  studying java back-end skills
+including : servlet, jsp, spring-framework, mybatis-framework etc
