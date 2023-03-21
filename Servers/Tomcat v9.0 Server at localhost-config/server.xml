@@ -153,7 +153,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       
-      <Context docBase="Spring_Practice_Board" path="/Spring_Sts_Maven" reloadable="true" source="org.eclipse.jst.jee.server:Spring_Practice_Board"/></Host>
+      <Context docBase="Practice_Web" path="/Practice_Web" reloadable="true" source="org.eclipse.jst.jee.server:Practice_Web"/></Host>
     </Engine>
   </Service>
 </Server>

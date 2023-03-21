@@ -51,8 +51,10 @@ public class MemberServlet extends HttpServlet {
 	}
 	
 	private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+		
 		MemberDAO dao = new MemberDAO();
 		PrintWriter out = response.getWriter();
 		String command = request.getParameter("command");
