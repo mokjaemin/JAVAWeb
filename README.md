@@ -1,6 +1,6 @@
 # JAVA Web Skills
-# Those are files for studying java back-end skills
-# RECAP : Servlet, JSP, Spring Framewrok, Spring Boot Framework
+Those are files for studying java back-end skills
+RECAP : Servlet, JSP, Spring Framewrok, Spring Boot Framework
 
 
 # CONTENT
