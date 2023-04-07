@@ -1,11 +1,11 @@
 # JAVA Web Skills
-Those are files for studying java back-end skills
-RECAP : Servlet, JSP, Spring Framewrok, Spring Boot Framework
+# Those are files for studying java back-end skills
+# RECAP : Servlet, JSP, Spring Framewrok, Spring Boot Framework
 
 
-CONTENT
+# CONTENT
 
-1. Servlet
+# 1. Servlet
 - Giving Life of Servlet
 - Hierachy of Servlet
 - Servlet Mapping
@@ -24,7 +24,7 @@ CONTENT
 - Filter
 - Listener
 
-2. JSP
+# 2. JSP
 - Directive Tag
 - Script
 - Inner Object function
@@ -39,7 +39,7 @@ CONTENT
 - Model2/MVC PATTERN
 - Making Board Service
 
-3. Spring Framework
+# 3. Spring Framework
 - IoC/DI
 - Spring MVC
 - Spring JDBC
@@ -54,7 +54,7 @@ CONTENT
 - Language Function
 - Spring REST API
 
-4. Spring Boot
+# 4. Spring Boot
 - Spring Boot Gradle
 - Spring Boot MyBatis
 - Spring Boot Tiles, Interceptor
